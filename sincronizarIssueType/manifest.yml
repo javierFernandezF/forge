@@ -1,0 +1,19 @@
+modules:
+  trigger:
+    - key: sincronizarissuetype-hello-world
+      function: main
+      events:
+        - avi:jira:updated:issue
+  function:
+    - key: main
+      handler: index.run
+app:
+  runtime:
+    name: nodejs20.x
+  id: ari:cloud:ecosystem::app/8c9f2e97-4d4a-430c-b330-63f5b1d12db3
+permissions:
+  scopes:
+    - read:jira-work       
+    - write:jira-work  
+
+
