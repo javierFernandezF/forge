@@ -28,6 +28,8 @@ export async function run(event, context) {
     return;
   }
 
+
+
   console.log("Evento de actualización detectado:", event);
 
   //Info de trigger issue
@@ -37,6 +39,13 @@ export async function run(event, context) {
     .asApp()
     .requestJira(route`/rest/api/3/issue/${issueKey}`);
   const issueData = await response.json();
+
+  // Paso 3: Validación para verificar si el proyecto es de tipo "service_desk"
+  const projectType = issueData.fields.project.projectTypeKey;
+  if (projectType === "service_desk") {
+      console.log("El issue pertenece a un proyecto de Service Management; no se ejecutan acciones.");
+      return;
+  }
 
   // Llama a la API de Jira para obtener la lista de todos los campos
   const fieldsResponse = await api
