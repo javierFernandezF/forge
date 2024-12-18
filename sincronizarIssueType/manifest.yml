@@ -10,11 +10,9 @@ modules:
 app:
   runtime:
     name: nodejs20.x
-  id: ari:cloud:ecosystem::app/8c9f2e97-4d4a-430c-b330-63f5b1d12db3
+  id: ari:cloud:ecosystem::app/5094a0f0-b88d-4aa0-95fc-e8101d55c7e5
 permissions:
   scopes:
-    - read:jira-work       
-    - write:jira-work  
+    - read:jira-work
+    - write:jira-work
     - read:jira-user
-
-

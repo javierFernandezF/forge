@@ -1,0 +1,30 @@
+modules:
+  jira:customFieldType:
+    - key: customfieldtype-custom-field-type-ui-kit-2-hello-world
+      name: customFieldType
+      description: A hello world custom field.
+      type: string
+      render: native
+      resource: main
+      edit:
+        resource: edit
+        render: native
+        isInline: true
+      contextConfig:
+        resource: config
+        layout: basic
+        render: native
+      validation:
+        expression: value == null || !!value.match(configuration?.regex || "^[A-Za-z]+$")
+        errorMessage: The value is invalid
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+  - key: edit
+    path: src/frontend/edit.jsx
+  - key: config
+    path: src/frontend/context-config.jsx
+app:
+  runtime:
+    name: nodejs22.x
+  id: ari:cloud:ecosystem::app/f772b272-f163-45da-9603-44f4fdecfc6c

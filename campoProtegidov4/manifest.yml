@@ -1,0 +1,21 @@
+modules:
+  jira:customField:
+    - key: campoprotegidov4-custom-field-ui-kit-2-hello-world
+      name: campoProtegidov4
+      description: A hello world custom field.
+      type: string
+      render: native
+      resource: main
+      edit:
+        resource: edit
+        render: native
+        isInline: true
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+  - key: edit
+    path: src/frontend/edit.jsx
+app:
+  runtime:
+    name: nodejs22.x
+  id: ari:cloud:ecosystem::app/697795c2-65f8-4186-9b98-90aae90c74f6

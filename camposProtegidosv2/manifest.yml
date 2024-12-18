@@ -1,0 +1,27 @@
+modules:
+  jira:customFieldType:
+    - key: camposprotegidosv2-configurable-validation
+      name: camposProtegidosv2
+      description: A basic custom field with a configurable validation.
+      type: string
+      validation:
+        expression: value == null || !!value.match(configuration?.regexp || "^[A-Za-z]+$")
+        errorMessage: The value is invalid
+      contextConfig:
+        resource: main
+        layout: basic
+      edit:
+        resource: edit
+resources:
+  - key: main
+    path: static/configurable-validation/public
+  - key: edit
+    path: static/edit/public
+permissions:
+  content:
+    styles:
+      - unsafe-inline
+app:
+  runtime:
+    name: nodejs22.x
+  id: ari:cloud:ecosystem::app/13d5c146-f9de-46f1-8248-02e73d79615d
